@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { BoxComponent } from './../layout/box.component';
 
 @Component({
-  selector: 'my-home',
+  selector: 'aso-home',
+  directives: [BoxComponent],
   template: require('./home.component.html'),
   styles: [require('./home.component.scss')]
 })

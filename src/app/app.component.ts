@@ -5,6 +5,8 @@ import { ApiService } from './shared';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 
+import {BoxComponent} from './layout/box.component.ts';
+
 import '../style/app.scss';
 
 /*
@@ -12,9 +14,9 @@ import '../style/app.scss';
  * Top Level Component
  */
 @Component({
-  selector: 'my-app', // <my-app></my-app>
+  selector: 'aso-app', // <my-app></my-app>
   providers: [ApiService],
-  directives: [...ROUTER_DIRECTIVES],
+  directives: [BoxComponent, ...ROUTER_DIRECTIVES],
   template: require('./app.component.html'),
   styles: [require('./app.component.scss')],
 })
