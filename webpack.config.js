@@ -17,6 +17,18 @@ var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
 
+console.log("ENV", ENV);
+var isCoverage = ENV.startsWith('coverage');
+
+isTest = isTest || isCoverage;
+
+console.log("IS TEST: ", isTest);
+console.log("IS COVERAGE: ", isCoverage);
+var gitlabConfig =  {
+  apiToken: process.env['GITLAB_API_TOKEN'],
+  url: 'https://git.serpro/api/v3'
+}
+
 module.exports = function makeWebpackConfig() {
   /**
    * Config
@@ -138,7 +150,7 @@ module.exports = function makeWebpackConfig() {
     noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
   };
 
-  if (isTest) {
+  if (isCoverage) {
     // instrument only testing sources with Istanbul, covers ts files
     config.module.postLoaders.push({
       test: /\.ts$/,
@@ -159,7 +171,8 @@ module.exports = function makeWebpackConfig() {
     new webpack.DefinePlugin({
       // Environment helpers
       'process.env': {
-        ENV: JSON.stringify(ENV)
+        ENV: JSON.stringify(ENV),
+        gitlabConfig: JSON.stringify(gitlabConfig)
       }
     })
   ];

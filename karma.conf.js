@@ -2,16 +2,23 @@ var path = require('path');
 
 var webpackConfig = require('./webpack.config');
 
+var ENV = process.env.npm_lifecycle_event;
+var isCoverage = ENV.startsWith('coverage');
+
+
 // inlineSourceMap and compilerOptions
 // are necessary to the coverage remap
-webpackConfig.devtool = "inline-resource-map";
-webpackConfig.ts = {
-  compilerOptions: {
-    sourceMap: false,
-    sourceRoot: './src',
-    inlineSourceMap: true
-  }
-};
+if (isCoverage) {
+  webpackConfig.devtool = "inline-source-map";  
+
+  webpackConfig.ts = {
+    compilerOptions: {
+      sourceMap: false,
+      sourceRoot: './src',
+      inlineSourceMap: true
+    }
+  };
+}
 
 module.exports = function (config) {
   var _config = {
@@ -71,7 +78,7 @@ module.exports = function (config) {
       reports: {
         lcovonly: 'coverage/json/lcov.info',
         html: 'coverage/html',
-        'text': null 
+        'text': null
       },
       timeoutNotCreated: 1000, // default value
       timeoutNoMoreFiles: 1000 // default value
@@ -99,9 +106,24 @@ module.exports = function (config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
 
+    customLaunchers: {
+      PhantomJS_without_security: {
+        base: 'PhantomJS',
+        flags: [
+          '--ignore-ssl-errors=true'
+        ]
+      },
+      Chrome_without_security: {
+        base: 'Chrome',
+        flags: [
+          '--ignore-certificate-errors'
+        ]
+      }
+    },
+
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'], // you can also use Chrome
+    browsers: ['Chrome_without_security'], // you can also use Chrome
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
