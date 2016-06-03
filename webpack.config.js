@@ -18,7 +18,8 @@ var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
 
 console.log("ENV", ENV);
-var isCoverage = ENV.startsWith('coverage');
+
+var isCoverage = ENV && ENV.startsWith('coverage');
 
 isTest = isTest || isCoverage;
 

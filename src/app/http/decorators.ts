@@ -122,7 +122,6 @@ function methodBuilder(method: number) {
             let pQuery = target[`${propertyKey}_Query_parameters`];
             let pBody = target[`${propertyKey}_Body_parameters`];
             let pHeader = target[`${propertyKey}_Header_parameters`];
-            debugger;
             descriptor.value = function (...args: any[]) {
 
                 // Body

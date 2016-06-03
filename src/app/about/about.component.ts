@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'my-about',
+  selector: 'aso-my-about',
   template: require('./about.component.html'),
   styles: [require('./about.component.scss')]
 })

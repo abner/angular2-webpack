@@ -3,13 +3,13 @@ var path = require('path');
 var webpackConfig = require('./webpack.config');
 
 var ENV = process.env.npm_lifecycle_event;
-var isCoverage = ENV.startsWith('coverage');
+var isCoverage = ENV && ENV.startsWith('coverage');
 
 
 // inlineSourceMap and compilerOptions
 // are necessary to the coverage remap
 if (isCoverage) {
-  webpackConfig.devtool = "inline-source-map";  
+  // webpackConfig.devtool = "inline-source-map";
 
   webpackConfig.ts = {
     compilerOptions: {
@@ -31,6 +31,7 @@ module.exports = function (config) {
       'karma-sourcemap-loader',
       'karma-phantomjs-launcher',
       'karma-chrome-launcher',
+      'karma-firefox-launcher',
       'karma-remap-istanbul'
     ],
 
@@ -91,7 +92,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress', 'mocha'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["mocha", "coverage", "karma-remap-istanbul"],
+    reporters: ["progress", "mocha", "coverage", "karma-remap-istanbul"],
 
     // web server port
     port: 9876,
@@ -101,7 +102,8 @@ module.exports = function (config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    // logLevel: config.LOG_INFO,
+    logLevel: 'DEBUG',
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
@@ -123,11 +125,11 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome_without_security'], // you can also use Chrome
+    browsers: ['PhantomJS_without_security'], // you can also use Chrome
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
   };
 
   config.set(_config);
