@@ -3,7 +3,7 @@ let env = process.env;
 import {provide} from '@angular/core';
 import {inject, beforeEach, beforeEachProviders} from '@angular/core/testing';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
-import {Project, GitlabProjectsRestClient} from './gitlabProjectsRestClient';
+import {GitlabProjectsRestClient} from './gitlabProjectsRestClient';
 
 describe('GitlabProjectsRestClient', () => {
 
@@ -22,33 +22,34 @@ describe('GitlabProjectsRestClient', () => {
         httpService = http;
     }));
 
-    // it("creates a new project on gitlab", (done) => {
+    // it('creates a new project on gitlab', (done) => {
     //     gitlabRestClient.addProject(<Project>{ name: 'new Project' })
     //         .subscribe(result => {
     //             expect(result).toBeDefined();
-    //             expect(result.name).toEqual("new Project");
+    //             expect(result.name).toEqual('new Project');
     //             done();
     //         }, (error => fail('Error adding a new project: ' + error.json())));
     // });
-    it("returns a project searching by name", (done) => {
-        gitlabRestClient.findProjectByName("new Project")
+
+    it('returns a project searching by name', (done) => {
+        gitlabRestClient.findProjectByName('electron-angular2-template')
             .subscribe(result => {
                 expect(result).toBeDefined();
-                expect(result[0].name).toEqual("new Project");
+                expect(result[0].name).toEqual('electron-angular2-template');
                 done();
             }, (error => fail('Error returning a specific project by name: ' + error.json())));
     });
 
-    it("returns a specific Project from Gitlab", (done) => {
-        gitlabRestClient.findProject(504)
+    it('returns a specific Project from Gitlab', (done) => {
+        gitlabRestClient.findProject(230)
             .subscribe(result => {
                 expect(result).toBeDefined();
-                expect(result.name).toEqual("template-angularjs-ts-ngforward");
+                expect(result.name).toEqual('electron-angular2-template');
                 done();
             }, (error => fail('Error returning a specific project: ' + error.json())));
-    })
+    });
 
-    it("returns gitlab projects from gitlab api", done => {
+    it('returns gitlab projects from gitlab api', done => {
         gitlabRestClient.projects().subscribe(result => {
             expect(result.length > 0).toBeTruthy();
             done();

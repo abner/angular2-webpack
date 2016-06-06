@@ -9,7 +9,7 @@ var isCoverage = ENV.startsWith('coverage');
 // inlineSourceMap and compilerOptions
 // are necessary to the coverage remap
 if (isCoverage) {
-  webpackConfig.devtool = "inline-source-map";  
+  webpackConfig.devtool = "inline-source-map";
 
   webpackConfig.ts = {
     compilerOptions: {
@@ -123,7 +123,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome_without_security'], // you can also use Chrome
+    browsers: ['PhantomJS_without_security'], // you can also use Chrome
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
