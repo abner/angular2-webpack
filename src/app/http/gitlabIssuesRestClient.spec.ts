@@ -27,7 +27,10 @@ describe('gitlabIssuesRestClient', () => {
         gitlabRestClient.getIssues(PROJECT_ID).subscribe((result: Issue[]) => {
             expect(result.length > 0).toBeTruthy();
             done();
-        }, (error => fail(`Error getting issues for project : ${PROJECT_ID} => ` + error.json())));
+        }, error => {
+            console.error(error);
+            fail(`Error getting issues for project : ${PROJECT_ID} => ` + error.body);
+        });
 
     });
 })
