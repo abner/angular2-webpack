@@ -18,7 +18,7 @@ describe('GitlabProjectsRestClient', () => {
 
     beforeEach(inject([Http, GitlabProjectsRestClient], (http: Http, _gitlabRestClient: GitlabProjectsRestClient) => {
         gitlabRestClient = _gitlabRestClient;
-        gitlabRestClient.addHeader('Private-Token', env.gitlabConfig.apiToken)
+        gitlabRestClient.addHeader('Private-Token', env.gitlabConfig.apiToken);
         httpService = http;
     }));
 
@@ -56,4 +56,4 @@ describe('GitlabProjectsRestClient', () => {
         }, (error => fail('Error getting projects: ' + error.json())));
 
     });
-})
+});

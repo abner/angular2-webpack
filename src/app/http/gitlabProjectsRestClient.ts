@@ -1,7 +1,7 @@
 import {Injectable, Inject} from '@angular/core';
 import {Http} from '@angular/http';
 import {RestBase} from './restBase.service';
-import {GET, POST, PUT, DELETE, HEAD, Path, Body, Headers, Produces, MediaType} from './decorators';
+import {GET, POST, PUT, DELETE, Path, Body, Headers, Produces, MediaType} from './decorators';
 import {Observable} from 'rxjs';
 
 export interface Project {
