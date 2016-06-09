@@ -26,7 +26,7 @@ console.log("IS TEST: ", isTest);
 console.log("IS COVERAGE: ", isCoverage);
 var gitlabConfig =  {
   apiToken: process.env['GITLAB_API_TOKEN'],
-  url: 'https://git.serpro/api/v3'
+  url: 'https://gitlab.com/api/v3'
 }
 
 module.exports = function makeWebpackConfig() {

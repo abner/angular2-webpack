@@ -1,7 +1,7 @@
-import {Inject, Injectable} from '@angular/core';
-import {Http, Request, Response, Headers} from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, Request, Headers} from '@angular/http';
 import {Observable} from 'rxjs';
-import {RestResult} from './restResult.model';
+
 
 @Injectable()
 export abstract class RestBase<T> {
@@ -10,9 +10,9 @@ export abstract class RestBase<T> {
         'Content-Type': 'application/json'
     });
 
-    constructor(private  http: Http, private baseUrl: string) {
+    constructor(private http: Http, private baseUrl: string) {
     }
-    
+
     addHeader(name: string, value: string) {
         this.headers.append(name, value);
     }

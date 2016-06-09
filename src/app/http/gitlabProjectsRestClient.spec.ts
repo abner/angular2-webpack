@@ -32,19 +32,19 @@ describe('GitlabProjectsRestClient', () => {
     // });
 
     it('returns a project searching by name', (done) => {
-        gitlabRestClient.findProjectByName('electron-angular2-template')
+        gitlabRestClient.findProjectByName('curso-angular-ts-ngforward')
             .subscribe(result => {
                 expect(result).toBeDefined();
-                expect(result[0].name).toEqual('electron-angular2-template');
+                expect(result[0].name).toEqual('curso-angular-ts-ngforward');
                 done();
             }, (error => fail('Error returning a specific project by name: ' + error.json())));
     });
 
     it('returns a specific Project from Gitlab', (done) => {
-        gitlabRestClient.findProject(230)
+        gitlabRestClient.findProject(1146463)
             .subscribe(result => {
                 expect(result).toBeDefined();
-                expect(result.name).toEqual('electron-angular2-template');
+                expect(result.name).toEqual('curso-angular-ts-ngforward');
                 done();
             }, (error => fail('Error returning a specific project: ' + error.json())));
     });
