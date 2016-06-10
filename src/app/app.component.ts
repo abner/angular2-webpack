@@ -6,6 +6,7 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 
 import {BoxComponent} from './layout/box.component.ts';
+import {ToolbarComponent} from './layout/toolbar.component';
 
 import '../style/app.scss';
 
@@ -16,13 +17,13 @@ import '../style/app.scss';
 @Component({
   selector: 'aso-app', // <my-app></my-app>
   providers: [ApiService],
-  directives: [BoxComponent, ...ROUTER_DIRECTIVES],
+  directives: [BoxComponent, ToolbarComponent, ...ROUTER_DIRECTIVES],
   template: require('./app.component.html'),
   styles: [require('./app.component.scss')],
 })
 @RouteConfig([
-  {path: '/', component: HomeComponent, name: 'Home'},
-  {path: '/About', component: AboutComponent, name: 'About'}
+  { path: '/', component: HomeComponent, name: 'Home' },
+  { path: '/About', component: AboutComponent, name: 'About' }
 ])
 export class AppComponent {
   url = 'https://github.com/preboot/angular2-webpack';

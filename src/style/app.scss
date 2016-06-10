@@ -1,27 +1,8 @@
-
-
-// styles in src/style directory are applied to the whole page
 body {
-    background: #0147A7;
-    color: #fff;
+    margin: 0px;
+    background: #fff;
+    color: #0147A7;
 }
 a {
     color: #03A9F4;
-}
-
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-
-
-.box {
-    @extend .panel;
-    @extend .panel-default;    
-}
-
-.box-head {
-    @extend .panel-heading
-}
-
-.box-body {
-    @extend .panel-body;
 }

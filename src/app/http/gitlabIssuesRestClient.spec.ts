@@ -89,6 +89,10 @@ describe('gitlabIssuesRestClient', () => {
         })
     );
 
+    it('force error on test', () => {
+        expect(false).toBeTruthy();
+    });
+
     it('returns gitlab issues from gitlab api 2',
         injectAsync([XHRBackend, GitlabIssuesRestClient], (mockBackend: MockBackend, gitlabIssuesRestClient) => {
             return new Promise((pass, fail) => {
