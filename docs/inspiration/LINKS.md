@@ -34,3 +34,8 @@ http://www.site.uplabs.com/posts/chattsy-chat-app
 ICON
 
 http://www.materialup.com/posts/to-do-list-app-icon-application
+
+
+Profile for Student
+
+http://www.site.uplabs.com/posts/student-profile-ui-design
