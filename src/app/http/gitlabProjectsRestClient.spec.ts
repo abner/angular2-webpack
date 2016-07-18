@@ -1,9 +1,11 @@
-let env = process.env;
-
 import {provide} from '@angular/core';
 import {inject, beforeEach, beforeEachProviders} from '@angular/core/testing';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
 import {GitlabProjectsRestClient} from './gitlabProjectsRestClient';
+
+import { GitlabEnvironmentConfig }  from '../models/gitlabEnvironmentConfig.interface';
+
+let gitlabEnvConfig: GitlabEnvironmentConfig = process.env.gitlabConfig;
 
 describe('GitlabProjectsRestClient', () => {
 
@@ -12,13 +14,13 @@ describe('GitlabProjectsRestClient', () => {
 
     beforeEachProviders(() => [
         HTTP_PROVIDERS,
-        provide('GitlabBaseUrl', { useValue: env.gitlabConfig.url }),
+        provide('GitlabBaseUrl', { useValue: gitlabEnvConfig.test.defaultUrl }),
         GitlabProjectsRestClient
     ]);
 
     beforeEach(inject([Http, GitlabProjectsRestClient], (http: Http, _gitlabRestClient: GitlabProjectsRestClient) => {
         gitlabRestClient = _gitlabRestClient;
-        gitlabRestClient.addHeader('Private-Token', env.gitlabConfig.apiToken);
+        gitlabRestClient.addHeader('Private-Token', gitlabEnvConfig.test.apiToken);
         httpService = http;
     }));
 
@@ -32,19 +34,19 @@ describe('GitlabProjectsRestClient', () => {
     // });
 
     it('returns a project searching by name', (done) => {
-        gitlabRestClient.findProjectByName('curso-angular-ts-ngforward')
+        gitlabRestClient.findProjectByName(gitlabEnvConfig.test.project.name)
             .subscribe(result => {
                 expect(result).toBeDefined();
-                expect(result[0].name).toEqual('curso-angular-ts-ngforward');
+                expect(result[0].name).toEqual(gitlabEnvConfig.test.project.name);
                 done();
             }, (error => fail('Error returning a specific project by name: ' + error.json())));
     });
 
     it('returns a specific Project from Gitlab', (done) => {
-        gitlabRestClient.findProject(1146463)
+        gitlabRestClient.findProject(gitlabEnvConfig.test.project.id)
             .subscribe(result => {
                 expect(result).toBeDefined();
-                expect(result.name).toEqual('curso-angular-ts-ngforward');
+                expect(result.name).toEqual(gitlabEnvConfig.test.project.name);
                 done();
             }, (error => fail('Error returning a specific project: ' + error.json())));
     });

@@ -1,15 +1,25 @@
-<aso-toolbar>
-  <a [routerLink]="['Home']">Home</a>
-  <a [routerLink]="['About']">About</a>
-</aso-toolbar>
-<main>
-  <h1 class="title">Hello from {{api.title}}!</h1>
+<md-sidenav-layout fullscreen>
+  <md-sidenav #sidenav>
+    <md-nav-list>
+      <a [routerLinkActive]="'active-link'" [routerLinkActiveOptions]="{exact: true}" [routerLink]="[page.url]" (click)="navigate(page)"
+        *ngFor="let page of pages">
+        <div class="md-list-item">
+          <md-icon md-list-icon class>{{page.icon}}</md-icon>
+          <div class="md-list-text">
+            <span md-line>{{page.text}}</span>
+            <span md-line class="secondary">{{page.description}}</span>
+          </div>
+        </div>
+      </a>
+    </md-nav-list>
 
-  <!-- Images (and assets) are parsed and loaded from within the public directory -->
-  <img src="/img/angular.png">
-
-  <router-outlet></router-outlet>
-</main>
-<footer>
-  <a [href]="url">Webpack Angular 2 Starter</a>
-</footer>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.toggle()">
+    <md-icon>menu</md-icon>
+    </button> My Team Space
+  </md-toolbar>
+  <div class="main-container">
+    <router-outlet></router-outlet>
+  </div>
+</md-sidenav-layout>

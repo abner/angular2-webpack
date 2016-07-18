@@ -1,8 +1,23 @@
-<div class="box">
-    <div class="box-head">
-        {{title}}
-    </div>
-    <div class="box-body">
-        <ng-content></ng-content>
-    </div>
-</div>
+<md-card>
+   <md-card-header>
+      <md-card-header-text>
+         <h2 class=“md-title”>{{title}}</h2>
+         <span class=“md-subhead” >{{subtitle}}</span>
+      </md-card-header-text>
+      <md-card-avatar>
+         <!--<img class=“md-user-avatar” src=“path/to/img.png”>-->
+      </md-card-avatar>
+   </md-card-header>
+   <md-card-title>
+      <md-card-title-text>
+         <h2 class=“md-headline”>Content title</h2>
+         <span class=“md-subhead”>Subtitle</span>
+      </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+      <ng-content></ng-content>
+   </md-card-content>
+   <md-card-actions>
+      <button md-raised-button color="primary">SHOW</button>
+   </md-card-actions>
+</md-card>

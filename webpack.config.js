@@ -9,6 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
+require('dotenv').config();
 /**
  * Env
  * Get npm lifecycle event to identify the environment
@@ -24,9 +25,17 @@ isTest = isTest || isCoverage;
 
 console.log("IS TEST: ", isTest);
 console.log("IS COVERAGE: ", isCoverage);
+
 var gitlabConfig =  {
-  apiToken: process.env['GITLAB_API_TOKEN'],
-  url: 'https://gitlab.com/api/v3'
+  defaultUrl: 'https://git.serpro/api/v3',
+  test: {
+     defaultUrl: 'https://git.serpro/api/v3',
+        apiToken: process.env['GITLAB_API_TOKEN'],
+        project: {
+            id: process.env['GITLAB_PROJECT_ID'],
+            name: process.env['GITLAB_PROJECT_NAME']
+        }
+  }
 }
 
 module.exports = function makeWebpackConfig() {

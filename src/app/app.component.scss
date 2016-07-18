@@ -1,6 +1,7 @@
 // styles applied on :host are applied on the current component, "app" in this case
 :host {
   display: block;
+  height: 100%;
 }
 
 header {
@@ -24,4 +25,68 @@ main {
 footer {
   text-align: center;
   font-size: 0.8em;
+}
+
+.secondary {
+ color: rgba(0,0,0,0.54);
+}
+
+.main-container {
+  padding: 20px;
+  margin: 5px;
+}
+
+
+
+/* overriding this classes because of the issue in angular material which
+is using a fixed color as black
+*/
+
+.md-list-item {
+ display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: 48px;
+    padding: 0 16px;
+    color: inherit;
+}
+
+a .md-list-item {
+  margin-bottom: 16px;
+}
+
+.md-list-item .md-list-icon {
+      width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+
+.md-list-item   .md-list-text {
+   display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0 16px;
+
+    }
+ .active-link {
+    color: rgb(135,190, 129) !important;
 }

@@ -1,3 +1,47 @@
+# Template Angular 2
+
+## Montagem do ambiente de desenvolvimento
+
+## Variáveis de ambiente para a execução dos testes
+
+
+## Estrutura da aplicação
+
+
+## Definição de layout
+
+
+## Gerando novos componentes e serviços utilizando o Yeoman
+
+
+## Testes unitários
+
+### Execução
+
+
+### Cobertura de testes
+
+
+### Integração Contínua
+
+
+## Testes Funcionais
+
+## Execução
+
+## Integração contínua
+
+
+## Documentação da Aplicação
+
+
+## Executando a construção da versão de produção
+
+
+## Arquitetura proposta para o ambiente produtivo
+
+
+
 # angular2-webpack
 
 [![Dependency Status](https://david-dm.org/preboot/angular2-webpack/status.svg)](https://david-dm.org/preboot/angular2-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular2-webpack/dev-status.svg)](https://david-dm.org/preboot/angular2-webpack#info=devDependencies)
