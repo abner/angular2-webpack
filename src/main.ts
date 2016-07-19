@@ -22,12 +22,15 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 
+import { BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
+
 bootstrap(AppComponent, [
     // These are dependencies of our App
     ...HTTP_PROVIDERS,
     appRouterProviders,
     // ...ROUTER_PROVIDERS,
     ...ENV_PROVIDERS,
+    BreadcrumbService,
      // , { provide: LocationStrategy, useClass: HashLocationStrategy } // use #/ routes, remove this for HTML5 mode
      provide(PLATFORM_DIRECTIVES, {useValue: ROUTER_DIRECTIVES, multi: true}),
      provide(PLATFORM_DIRECTIVES, {useValue: MD_BUTTON_DIRECTIVES, multi: true}),

@@ -15,4 +15,8 @@ a {
     color: #03A9F4;
 }
 
+a[role=button] {
+    cursor: pointer;
+}
+
 @import '~roboto-fontface/css/roboto/roboto-fontface.css';
