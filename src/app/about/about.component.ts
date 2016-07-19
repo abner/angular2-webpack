@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'aso-my-about',
   template: require('./about.component.html'),
-  styles: [require('./about.component.scss')]
+  styles: [require('./about.component.scss')],
+  directives: [
+  ]
 })
 export class AboutComponent implements OnInit {
 

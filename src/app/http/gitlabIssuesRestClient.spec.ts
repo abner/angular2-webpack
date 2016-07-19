@@ -1,19 +1,22 @@
-let env = process.env;
-
 import {provide, Injector, ReflectiveInjector} from '@angular/core';
 import {
     describe,
     expect,
     beforeEach,
     it,
+    async,
     inject,
-    injectAsync,
     beforeEachProviders
 } from '@angular/core/testing';
 
 import {HTTP_PROVIDERS, Http, BaseRequestOptions, XHRBackend, Response, ResponseOptions} from '@angular/http';
 import { MockBackend, MockConnection, } from '@angular/http/testing';
 import {Issue, GitlabIssuesRestClient} from './gitlabIssuesRestClient';
+
+import { GitlabEnvironmentConfig }  from '../models/gitlabEnvironmentConfig.interface';
+
+let gitlabEnvConfig: GitlabEnvironmentConfig = process.env.gitlabConfig;
+
 
 describe('gitlabIssuesRestClient', () => {
 
@@ -61,12 +64,12 @@ describe('gitlabIssuesRestClient', () => {
 
     beforeEach(inject([Http, GitlabIssuesRestClient], (http: Http, _gitlabRestClient: GitlabIssuesRestClient) => {
         gitlabRestClient = _gitlabRestClient;
-        gitlabRestClient.addHeader('Private-Token', env.gitlabConfig.apiToken);
+        gitlabRestClient.addHeader('Private-Token', gitlabEnvConfig.test.apiToken);
         httpService = http;
     }));
 
     it('returns gitlab issues from gitlab api',
-        injectAsync([XHRBackend, GitlabIssuesRestClient], (mockBackend: MockBackend, gitlabIssuesRestClient) => {
+        async(inject([XHRBackend, GitlabIssuesRestClient], (mockBackend: MockBackend, gitlabIssuesRestClient) => {
             return new Promise((pass, fail) => {
                 mockBackend.connections.subscribe((connection: MockConnection) => {
                     connection.mockRespond(new Response(
@@ -87,14 +90,10 @@ describe('gitlabIssuesRestClient', () => {
 
 
         })
-    );
-
-    it('force error on test', () => {
-        expect(false).toBeTruthy();
-    });
+    ));
 
     it('returns gitlab issues from gitlab api 2',
-        injectAsync([XHRBackend, GitlabIssuesRestClient], (mockBackend: MockBackend, gitlabIssuesRestClient) => {
+        async(inject([XHRBackend, GitlabIssuesRestClient], (mockBackend: MockBackend, gitlabIssuesRestClient) => {
             return new Promise((pass, fail) => {
                 mockBackend.connections.subscribe((connection: MockConnection) => {
                     connection.mockRespond(new Response(
@@ -114,13 +113,11 @@ describe('gitlabIssuesRestClient', () => {
                     fail(`Error getting issues for project : ${PROJECT_ID} => ` + error.body);
                 });
             });
-
-
-        })
+        }))
     );
 
     it('handles errors when getting  issues from gitlab api',
-        injectAsync([XHRBackend, GitlabIssuesRestClient], (mockBackend: MockBackend, gitlabIssuesRestClient) => {
+        async(inject([XHRBackend, GitlabIssuesRestClient], (mockBackend: MockBackend, gitlabIssuesRestClient) => {
             return new Promise((pass, fail) => {
                 mockBackend.connections.subscribe((connection: MockConnection) => {
                     connection.mockError(new Error('fail getting data from api'));
@@ -134,6 +131,6 @@ describe('gitlabIssuesRestClient', () => {
             });
 
 
-        })
+        }))
     );
 });

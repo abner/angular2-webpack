@@ -4,6 +4,11 @@
 body {
     background: #0147A7;
     color: #fff;
+    height: 100%;
+}
+
+html {
+    height: 100%;
 }
 a {
     color: #03A9F4;
@@ -15,7 +20,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .box {
     @extend .panel;
-    @extend .panel-default;    
+    @extend .panel-default;
 }
 
 .box-head {
