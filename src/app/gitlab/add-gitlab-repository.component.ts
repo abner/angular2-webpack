@@ -29,6 +29,12 @@ import { GitlabRepositoryAsyncValidator } from './gitlab-repository-async-valida
     }
   ]*/
 })
+/**
+ * REFERENCES:
+ *  http://blog.angular-university.io/introduction-to-angular-2-forms-template-driven-vs-model-driven/
+ *  http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html
+ *  http://blog.ng-book.com/the-ultimate-guide-to-forms-in-angular-2/
+ */
 export class AddGitlabRepositoryComponent {
 
     public nameControl: FormControl;
