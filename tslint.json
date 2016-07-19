@@ -106,8 +106,8 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "directive-selector-prefix": [true, "aso"],
-    "component-selector-prefix": [true, "aso"],
-    "pipe-naming": [true, "camelCase", "aso"]
+    "directive-selector-prefix": [true, "mts"],
+    "component-selector-prefix": [true, "mts"],
+    "pipe-naming": [true, "camelCase", "mts"]
   }
 }

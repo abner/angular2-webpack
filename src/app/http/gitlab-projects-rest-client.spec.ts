@@ -1,9 +1,9 @@
 import {provide} from '@angular/core';
 import {inject, beforeEach, beforeEachProviders} from '@angular/core/testing';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
-import {GitlabProjectsRestClient} from './gitlabProjectsRestClient';
+import {GitlabProjectsRestClient} from './gitlab-projects-rest-client';
 
-import { GitlabEnvironmentConfig }  from '../models/gitlabEnvironmentConfig.interface';
+import { GitlabEnvironmentConfig }  from '../models';
 
 let gitlabEnvConfig: GitlabEnvironmentConfig = process.env.gitlabConfig;
 

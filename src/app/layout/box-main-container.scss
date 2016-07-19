@@ -1,0 +1,18 @@
+.box-head {
+   background-color: burlywood;
+   font-weight: bold;
+   font-size: bold;
+}
+
+md-card {
+    min-height: 600px;
+}
+
+:host {
+    height: auto;
+}
+
+
+breadcrumb {
+    font-size: 1.4em;
+}

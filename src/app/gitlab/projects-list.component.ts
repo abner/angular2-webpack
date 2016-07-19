@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 
+import { BoxMainContainerComponent } from '../layout';
+
 @Component({
-    selector: 'aso-gitlab-projects',
-    template: require('./projects-list.html')
+    selector: 'mts-gitlab-projects',
+    template: require('./projects-list.html'),
+    directives: [BoxMainContainerComponent]
 })
 export class GitlabProjectsListComponent {
 

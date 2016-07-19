@@ -1,0 +1,12 @@
+<form name="addGitlabRepository">
+    <md-input required type=”text” (onBlur)="checkRepository()" ngControl=”name” placeholder="Gitlab Repository Name" />
+
+    <p *ngIf=”name.pending”>
+        Fetching data from the server...
+    </p>
+    <div *ngIf=”name.dirty && !name.valid && !name.pending”>
+        <p *ngIf=”name.errors.repositoryNotExists>
+            The repository does not exists
+        </p>
+    </div>
+</form>
