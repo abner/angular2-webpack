@@ -1,0 +1,25 @@
+<md-card class="main-card">
+   <!--<md-card-header>
+      <md-card-header-text>
+
+      </md-card-header-text>
+      <md-card-avatar>
+         <img class=“md-user-avatar” src=“path/to/img.png”>
+      </md-card-avatar>
+
+   </md-card-header>-->
+   <breadcrumb class="main-breadcrumb"></breadcrumb>
+   <!--<md-card-title [style.paddingLeft]="'12px'">
+
+      <md-card-title-text>
+         <h2 class=“md-headline” [innerHtml]="title"></h2>
+         <span class=“md-subhead” [innerHtml]="subTitle"></span>
+      </md-card-title-text>
+   </md-card-title>-->
+   <md-card-content [style.paddingLeft]="'15px'">
+      <ng-content></ng-content>
+   </md-card-content>
+   <md-card-actions>
+      <mts-container-actions></mts-container-actions>
+   </md-card-actions>
+</md-card>

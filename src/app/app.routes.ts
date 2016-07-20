@@ -1,7 +1,7 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
 
 import { AboutComponent } from './about';
-import { GitlabDashboardComponent } from './gitlab';
+import { GitlabDashboardComponent, GitlabProjectsListComponent } from './gitlab';
 import { HomeComponent } from './home';
 
 const routes: RouterConfig = [
@@ -16,6 +16,10 @@ const routes: RouterConfig = [
         path: 'dashboard',
         component: GitlabDashboardComponent
       },
+      {
+        path: 'projects',
+        component: GitlabProjectsListComponent
+      }
     ]
   },
   {

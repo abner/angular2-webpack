@@ -13,7 +13,7 @@ import {HTTP_PROVIDERS, Http, BaseRequestOptions, XHRBackend, Response, Response
 import { MockBackend, MockConnection, } from '@angular/http/testing';
 import {Issue, GitlabIssuesRestClient} from './gitlabIssuesRestClient';
 
-import { GitlabEnvironmentConfig }  from '../models/gitlabEnvironmentConfig.interface';
+import { GitlabEnvironmentConfig }  from '../models';
 
 let gitlabEnvConfig: GitlabEnvironmentConfig = process.env.gitlabConfig;
 

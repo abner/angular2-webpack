@@ -1,11 +1,14 @@
 import {provide} from '@angular/core';
 import {inject, beforeEach, beforeEachProviders} from '@angular/core/testing';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
-import {GitlabProjectsRestClient} from './gitlabProjectsRestClient';
+import {GitlabProjectsRestClient} from './gitlab-projects-rest-client';
 
-import { GitlabEnvironmentConfig }  from '../models/gitlabEnvironmentConfig.interface';
+import { GitlabEnvironmentConfig }  from '../models';
 
 let gitlabEnvConfig: GitlabEnvironmentConfig = process.env.gitlabConfig;
+
+
+import { GITLAB_BASE_URL } from './';
 
 describe('GitlabProjectsRestClient', () => {
 
@@ -14,7 +17,7 @@ describe('GitlabProjectsRestClient', () => {
 
     beforeEachProviders(() => [
         HTTP_PROVIDERS,
-        provide('GitlabBaseUrl', { useValue: gitlabEnvConfig.test.defaultUrl }),
+        provide(GITLAB_BASE_URL, { useValue: gitlabEnvConfig.test.defaultUrl }),
         GitlabProjectsRestClient
     ]);
 

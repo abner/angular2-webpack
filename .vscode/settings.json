@@ -1,8 +1,11 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+<<<<<<< HEAD
      "editor.fontLigatures": true,
      "editor.fontFamily": "Fira Code",
 
     // Controls the font size.
     "editor.fontSize": 14
+=======
+>>>>>>> 57335d788ce784616024136b01ac99e5ebc55c50
 }

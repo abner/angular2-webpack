@@ -7,12 +7,18 @@ html {
 body {
     margin: 0px;
     padding:0px;
-    background: #fff;
+    // background: #fff;
+    background-color: #829492;
     height: 100%;
     font-family: 'Roboto';
 }
+
 a {
     color: #03A9F4;
+}
+
+a[role=button] {
+    cursor: pointer;
 }
 
 @import '~roboto-fontface/css/roboto/roboto-fontface.css';

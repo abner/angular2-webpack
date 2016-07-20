@@ -1,23 +1,13 @@
 <md-sidenav-layout fullscreen>
   <md-sidenav #sidenav>
-    <md-nav-list>
-      <a [routerLinkActive]="'active-link'" [routerLinkActiveOptions]="{exact: true}" [routerLink]="[page.url]" (click)="navigate(page)" *ngFor="let page of pages">
-        <div class="md-list-item">
-          <md-icon md-list-icon class>{{page.icon}}</md-icon>
-          <div class="md-list-text">
-            <span md-line>{{page.text}}</span>
-            <span md-line class="secondary">{{page.description}}</span>
-          </div>
-        </div>
-      </a>
-    </md-nav-list>
+    <mts-sidenav-items-list [items]="getMenuItems()" (onNavigate)="sidenav.close()"></mts-sidenav-items-list>
   </md-sidenav>
-  <md-toolbar color="primary" [class]="'toolbar-navy'">
+  <md-toolbar color="primary"><!-- [class]="'toolbar-navy'"-->
     <button md-icon-button (click)="sidenav.toggle()">
     <md-icon>menu</md-icon>
-    </button> My Team Space
+    </button>{{title}}
   </md-toolbar>
   <div class="main-container">
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
   </div>
 </md-sidenav-layout>
