@@ -31,7 +31,10 @@ import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 
 import { BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
 
-import { GITLAB_BASE_URL } from './app/http/';
+import { GITLAB_BASE_URL, GITLAB_PRIVATE_TOKEN} from './app/http/';
+
+import { GitlabEnvironmentConfig } from './app/models';
+let gitlabEnvConfig: GitlabEnvironmentConfig = process.env.gitlabConfig;
 
 bootstrap(AppComponent, [
     disableDeprecatedForms(),
@@ -49,8 +52,7 @@ bootstrap(AppComponent, [
      provide(PLATFORM_DIRECTIVES, {useValue: MD_LIST_DIRECTIVES, multi: true}),
      provide(PLATFORM_DIRECTIVES, {useValue: MD_INPUT_DIRECTIVES, multi: true}),
      provide(PLATFORM_DIRECTIVES, {useValue: ROUTER_DIRECTIVES, multi: true}),
-     provide(GITLAB_BASE_URL, { useValue: 'https://gitlab.com/api/v3' })
-
-
+     provide(GITLAB_BASE_URL, { useValue: 'https://gitlab.com/api/v3' }),
+     provide(GITLAB_PRIVATE_TOKEN, { useValue: gitlabEnvConfig.test.apiToken }),
   ])
   .catch(err => console.error(err));
