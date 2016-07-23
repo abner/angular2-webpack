@@ -1,7 +1,5 @@
 import {Component, Inject, Directive, Host} from '@angular/core';
 import {
-    NG_VALIDATORS,
-    NG_ASYNC_VALIDATORS,
     FORM_DIRECTIVES,
     REACTIVE_FORM_DIRECTIVES,
     Validators,
