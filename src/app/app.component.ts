@@ -19,6 +19,8 @@ import { MD_GRID_LIST_DIRECTIVES } from '@angular2-material/grid-list';
 // import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 
+import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+
 import {  BreadcrumbComponent, BreadcrumbService } from 'ng2-breadcrumb/ng2-breadcrumb';
 
 import { ApiService } from './shared';
@@ -30,7 +32,8 @@ let MATERIAL_DIRECTIVES = [
   MD_GRID_LIST_DIRECTIVES,
   MD_SIDENAV_DIRECTIVES,
   MD_TOOLBAR_DIRECTIVES,
-  MD_CARD_DIRECTIVES
+  MD_CARD_DIRECTIVES,
+  MD_INPUT_DIRECTIVES
 ];
 
 let APP_DIRECTIVES = [
@@ -50,6 +53,8 @@ let APP_DIRECTIVES = [
   styles: [require('./app.component.scss')],
 })
 export class AppComponent {
+
+  projeto: string = '';
 
   formShowing: boolean = false;
 
