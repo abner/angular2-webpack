@@ -5,12 +5,12 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export abstract class RestBase<T> {
-    private headers: Headers = new Headers({
+    protected headers: Headers = new Headers({
         'Accept': 'application/json',
         'Content-Type': 'application/json'
     });
 
-    constructor(private http: Http, private baseUrl: string) {
+    constructor(protected http: Http, private baseUrl: string) {
     }
 
     addHeader(name: string, value: string) {
