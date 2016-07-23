@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { AbstractControl } from '@angular/common';
+import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AsyncValidatorFn } from '@angular/forms/src/directives/validators';
 
@@ -11,39 +10,20 @@ import { Project } from '../http/gitlab-projects-rest-client';
 export class GitlabRepositoryAsyncValidator {
     private input = new ReplaySubject<string>();
     private request: any;
+
+    // does not work, call the server multiple times -> DO NOT USE YET 
     constructor( @Inject(GitlabProjectsRestClient) private restClient: GitlabProjectsRestClient) {
         this.input = new ReplaySubject<string>(1);
 
         this.request = this.input
-            .debounceTime(450)
+            .debounceTime(1000)
             .distinctUntilChanged()
-            .map(x => x)
-            .switchMap(value => value)
-            //subscribe and so call the http client to see if it will work
-            .do(value => { console.log('HERE', value);if(value[0] && value[0] !== '' ) { return restClient.findProjectByName(value[0]) } })
-            .map(r => r)
+            .take(1)
+            .switchMap(input => restClient.findProjectByName(input))
             .catch(() => Observable.of(null));
-    }
-    checkRepositoryExistsByName = (control: AbstractControl): AsyncValidatorFn  => {
 
-        // let observable: any = Observable.create((observer: Observer<any>) => {
-        //     control
-        //         .valueChanges.filter(f => f.length > 3)
-        //         .debounceTime(2000)
-        //         .flatMap(value => restClient.findProjectByName(value))
-        //         .subscribe(
-        //         projects => {
-        //             observer.next(null);
-        //             observer.complete();
-        //         },
-        //         error => {
-        //             observer.next({
-        //                 ['repositoryNotExists']: true
-        //             });
-        //             observer.complete();
-        //         }
-        //         );
-        // });
+    }
+    checkRepositoryExistsByName = (control: AbstractControl): AsyncValidatorFn => {
         this.input.next(control.value);
         return this.request;
     };
