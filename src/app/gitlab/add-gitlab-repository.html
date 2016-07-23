@@ -1,7 +1,11 @@
 <form name="addGitlabRepository">
-    <md-input required type=”text” (change)="checkRepository($event)" #name [formControl]="nameControl" placeholder="Gitlab Repository Name">
+    <md-input required type=”text” #name [formControl]="nameControl" placeholder="Gitlab Repository Name">
 
     </md-input>
+
+    <md-input placeholder="Author" [(ngModel)]="author" [ngModelOptions]="{standalone: true}"></md-input>
+
+    {{author}}
 
     <p *ngIf="name.pending">
         Fetching data from the server...

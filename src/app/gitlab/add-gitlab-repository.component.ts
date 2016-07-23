@@ -25,17 +25,6 @@ import { GitlabRepositoryAsyncValidator } from './gitlab-repository-async-valida
         FORM_DIRECTIVES,
     ],
     providers: [GitlabProjectsRestClient, GitlabRepositoryAsyncValidator]
-    /*,
-    providers: [
-    {
-      provide: NG_ASYNC_VALIDATORS,
-      useFactory: (restClient) => {
-        return GitlabRepositoryAsyncValidator.checkRepositoryExistsByName(restClient);
-      },
-      deps: [GitlabProjectsRestClient],
-      multi: true
-    }
-  ]*/
 })
 export class AddGitlabRepositoryComponent {
 
@@ -48,7 +37,8 @@ export class AddGitlabRepositoryComponent {
 
         this.nameControl = new FormControl('',
                             Validators.composeAsync([
-                                    <any>gitlabRepositoryAsyncValidator.checkRepositoryExistsByName
+                                    // gitlabRepositoryAsyncValidator.checkRepositoryExistsByName
+                                    // does not works yet - calls the server multiple times
                                 ]));
     }
 
