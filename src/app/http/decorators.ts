@@ -24,6 +24,7 @@ Table of Contents:
 import {RestBase} from './restBase.service';
 import {
 Headers as AngularHeaders,
+Http,
 Request, RequestOptions, RequestMethod as RequestMethods,
 Response,
 URLSearchParams
@@ -188,8 +189,9 @@ function methodBuilder(method: number) {
 
                 // intercept the request
                 this.requestInterceptor(req);
+                let http: Http = this.http;
                 // make the request and store the observable for later transformation
-                let observable: Observable<Response> = this.http.request(req);
+                let observable: Observable<Response> = http.request(req);
 
                 // transform the obserable in accordance to the @Produces decorator
                 if (descriptor.isJSON) {
