@@ -20,6 +20,7 @@ export class GitlabRepositoryAsyncValidator {
             .distinctUntilChanged()
             .take(1)
             .switchMap(input => restClient.findProjectByName(input))
+            .share()
             .catch(() => Observable.of(null));
 
     }

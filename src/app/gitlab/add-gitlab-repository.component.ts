@@ -35,7 +35,7 @@ export class AddGitlabRepositoryComponent {
 
         this.nameControl = new FormControl('',
                             Validators.composeAsync([
-                                    // gitlabRepositoryAsyncValidator.checkRepositoryExistsByName
+                                     gitlabRepositoryAsyncValidator.checkRepositoryExistsByName
                                     // does not works yet - calls the server multiple times
                                 ]));
     }
