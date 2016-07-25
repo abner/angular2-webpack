@@ -17,7 +17,6 @@ export class SidenavItemsListComponent {
     }
 
     navigate(item: AppMenuItem) {
-        this.router.navigate([item.url]);
         this.onNavigate.next(null);
     }
 }

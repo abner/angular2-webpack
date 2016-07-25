@@ -1,7 +1,9 @@
 
 <md-nav-list>
-    <a [routerLinkActive]="'active-link'" [routerLinkActiveOptions]="{exact: true}" [routerLink]="[page.url]" (click)="navigate(page)"
-        *ngFor="let page of items">
+    <a 
+        [routerLinkActive]="'active-link'" [routerLinkActiveOptions]="{exact: true}" [routerLink]="[page.url]" 
+        *ngFor="let page of items"
+        (click)="navigate(item)" >
         <div class="md-list-item">
             <md-icon md-list-icon class>{{page.icon}}</md-icon>
             <div class="md-list-text">
