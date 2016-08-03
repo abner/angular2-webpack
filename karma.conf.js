@@ -14,7 +14,7 @@ if (isCoverage) {
   webpackConfig.ts = {
     compilerOptions: {
       sourceMap: false,
-      sourceRoot: './src',
+      sourceRoot: './',
       inlineSourceMap: true
     }
   };

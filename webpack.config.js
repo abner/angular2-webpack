@@ -27,9 +27,9 @@ console.log("IS TEST: ", isTest);
 console.log("IS COVERAGE: ", isCoverage);
 
 var gitlabConfig =  {
-  defaultUrl: 'https://git.serpro/api/v3',
+  defaultUrl: process.env['GITLAB_BASE_URL'],
   test: {
-     defaultUrl: 'https://git.serpro/api/v3',
+     defaultUrl: process.env['GITLAB_BASE_URL'],
         apiToken: process.env['GITLAB_API_TOKEN'],
         project: {
             id: process.env['GITLAB_PROJECT_ID'],
@@ -180,6 +180,7 @@ module.exports = function makeWebpackConfig() {
     new webpack.DefinePlugin({
       // Environment helpers
       'process.env': {
+        isTest: isTest,
         ENV: JSON.stringify(ENV),
         gitlabConfig: JSON.stringify(gitlabConfig)
       }

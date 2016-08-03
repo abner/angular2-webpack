@@ -4,6 +4,8 @@ import {RestBase} from './restBase.service';
 import {GET, POST,  DELETE,  Path, Body, Produces, MediaType} from './decorators';
 import {Observable} from 'rxjs';
 
+import { GITLAB_BASE_URL, GITLAB_PRIVATE_TOKEN } from './';
+
 export interface Issue {
     id: number;
     name: string;
@@ -12,8 +14,9 @@ export interface Issue {
 @Injectable()
 export class GitlabIssuesRestClient extends RestBase<Issue> {
 
-    constructor( @Inject(Http) http: Http, @Inject('GitlabBaseUrl') baseUrl: string) {
+    constructor( @Inject(Http) http: Http, @Inject(GITLAB_BASE_URL) baseUrl: string, @Inject(GITLAB_PRIVATE_TOKEN) privateToken: string) {
         super(http, baseUrl);
+        this.addHeader('Private-Token', privateToken);
     }
 
     @GET('/projects/{projectId}/issues')

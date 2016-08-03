@@ -36,10 +36,13 @@ let MATERIAL_DIRECTIVES = [
   MD_INPUT_DIRECTIVES
 ];
 
-let APP_DIRECTIVES = [
-  SidenavItemsListComponent,
+let APP_DIRECTIVES = <any> [
   BreadcrumbComponent
 ];
+
+if ( ! process.env.isTest) {
+  APP_DIRECTIVES.push(SidenavItemsListComponent);
+}
 
 /*
  * App Component

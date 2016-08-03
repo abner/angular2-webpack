@@ -7,6 +7,7 @@ import { GitlabEnvironmentConfig }  from '../models';
 
 let gitlabEnvConfig: GitlabEnvironmentConfig = process.env.gitlabConfig;
 
+import { GITLAB_PRIVATE_TOKEN } from './';
 
 import { GITLAB_BASE_URL } from './';
 
@@ -17,13 +18,14 @@ describe('GitlabProjectsRestClient', () => {
 
     beforeEachProviders(() => [
         HTTP_PROVIDERS,
+        provide(GITLAB_PRIVATE_TOKEN, { useValue: gitlabEnvConfig.test.apiToken }),
         provide(GITLAB_BASE_URL, { useValue: gitlabEnvConfig.test.defaultUrl }),
         GitlabProjectsRestClient
     ]);
 
     beforeEach(inject([Http, GitlabProjectsRestClient], (http: Http, _gitlabRestClient: GitlabProjectsRestClient) => {
         gitlabRestClient = _gitlabRestClient;
-        gitlabRestClient.addHeader('Private-Token', gitlabEnvConfig.test.apiToken);
+        // gitlabRestClient.addHeader('Private-Token', gitlabEnvConfig.test.apiToken);
         httpService = http;
     }));
 

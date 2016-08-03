@@ -17,6 +17,7 @@ import { GitlabEnvironmentConfig }  from '../models';
 
 let gitlabEnvConfig: GitlabEnvironmentConfig = process.env.gitlabConfig;
 
+import { GITLAB_PRIVATE_TOKEN, GITLAB_BASE_URL } from './';
 
 describe('gitlabIssuesRestClient', () => {
 
@@ -32,6 +33,7 @@ describe('gitlabIssuesRestClient', () => {
     function getMockedHttp(): any[] {
         let injector: Injector = ReflectiveInjector.resolveAndCreate([
             MockBackend,
+            provide(GITLAB_PRIVATE_TOKEN, { useValue: gitlabEnvConfig.test.apiToken }),
             BaseRequestOptions,
             provide(Http, {
                 useFactory: (backend, options) => {
@@ -57,14 +59,15 @@ describe('gitlabIssuesRestClient', () => {
 
     beforeEachProviders(() => [
         HTTP_PROVIDERS,
+        provide(GITLAB_PRIVATE_TOKEN, { useValue: gitlabEnvConfig.test.apiToken }),
+        provide(GITLAB_BASE_URL, { useValue: gitlabEnvConfig.test.defaultUrl }),
         provide(XHRBackend, { useClass: MockBackend }),
-        provide('GitlabBaseUrl', { useValue: 'http://gitlab.com/api/v3/' }),
         GitlabIssuesRestClient
     ]);
 
     beforeEach(inject([Http, GitlabIssuesRestClient], (http: Http, _gitlabRestClient: GitlabIssuesRestClient) => {
         gitlabRestClient = _gitlabRestClient;
-        gitlabRestClient.addHeader('Private-Token', gitlabEnvConfig.test.apiToken);
+        // gitlabRestClient.addHeader('Private-Token', gitlabEnvConfig.test.apiToken);
         httpService = http;
     }));
 

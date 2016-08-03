@@ -1,6 +1,6 @@
 <md-sidenav-layout fullscreen>
   <md-sidenav #sidenav>
-    <mts-sidenav-items-list [items]="getMenuItems()" (onNavigate)="sidenav.close()"></mts-sidenav-items-list>
+    <mts-sidenav-items-list *ngIf="showSidenavItems" [items]="getMenuItems()" (onNavigate)="sidenav.close()"></mts-sidenav-items-list>
   </md-sidenav>
   <md-toolbar color="primary"><!-- [class]="'toolbar-navy'"-->
     <button md-icon-button (click)="sidenav.toggle()">

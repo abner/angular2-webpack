@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BoxMainContainerComponent } from '../layout';
 
 import { AddGitlabRepositoryComponent } from './add-gitlab-repository.component';
@@ -8,7 +9,7 @@ import { AddGitlabRepositoryComponent } from './add-gitlab-repository.component'
     directives: [AddGitlabRepositoryComponent,BoxMainContainerComponent]
 })
 export class GitlabDashboardComponent {
-    constructor() {
-
+    constructor(route: ActivatedRoute) {
+        console.log('Current ROUTE', route.snapshot);
     }
 }
