@@ -35,7 +35,7 @@ class MockRouter {
 
 let constantObservableConstructor = (params: any) => {
   return Observable.of(1);
-}
+};
 
 let mockedActivatedRouteObj = {
   routerState: {
@@ -49,7 +49,7 @@ let mockedActivatedRouteObj = {
       id: 1
     }
   }
-}
+};
 
 describe('About Component', () => {
 

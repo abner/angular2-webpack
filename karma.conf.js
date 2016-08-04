@@ -91,7 +91,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress', 'mocha'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["mocha", "coverage", "karma-remap-istanbul"],
+    reporters: ["mocha"].concat(isCoverage ? ["coverage", "karma-remap-istanbul"] : []),
 
     // web server port
     port: 9876,
