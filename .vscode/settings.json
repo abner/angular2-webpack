@@ -4,5 +4,12 @@
      "editor.fontFamily": "Fira Code",
 
     // Controls the font size.
-    "editor.fontSize": 14
+    "editor.fontSize": 14,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/node_modules/**": true,
+        "**/coverage/**": true,
+        "**/docs/**": true,
+        "**/dist/**": true
+    }
 }
