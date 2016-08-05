@@ -11,7 +11,7 @@ import {
 
 import {HTTP_PROVIDERS, Http, BaseRequestOptions, XHRBackend, Response, ResponseOptions} from '@angular/http';
 import { MockBackend, MockConnection, } from '@angular/http/testing';
-import {Issue, GitlabIssuesRestClient} from './gitlabIssuesRestClient';
+import {Issue, GitlabIssuesRestClient} from './gitlab-issues-rest-client';
 
 import { GitlabEnvironmentConfig }  from '../models';
 
@@ -128,8 +128,7 @@ describe('gitlabIssuesRestClient', () => {
                 gitlabIssuesRestClient.getIssues(PROJECT_ID).subscribe((result: Issue[]) => {
                     fail('An error was expected');
                 }, error => {
-                    console.log('ERROR', error);
-                    expect(error).toBeDefined();
+                    expect(error.message).toEqual('fail getting data from api');
                 });
             });
 

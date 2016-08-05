@@ -21,7 +21,7 @@ export class GitlabRepositoryAsyncValidator {
             .take(1)
             .switchMap(input => restClient.findProjectByName(input))
             .share()
-            .catch(() => Observable.of(null));
+            .catch((e, b: Observable<Project[]>) => { console.error('Error validating project', e); return Observable.of([]); });
 
     }
     checkRepositoryExistsByName = (control: AbstractControl): AsyncValidatorFn => {

@@ -1,4 +1,4 @@
-import {Component, Inject, Directive, Host} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
     FORM_DIRECTIVES,
     REACTIVE_FORM_DIRECTIVES,

@@ -1,15 +1,15 @@
 
 import { Component, ViewChild, Inject } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 
 import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
 import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 // import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material/radio';
-import {MD_ICON_DIRECTIVES, MdIconRegistry} from '@angular2-material/icon';
+
+import {MdIconRegistry} from '@angular2-material/icon';
 import { MD_GRID_LIST_DIRECTIVES } from '@angular2-material/grid-list';
 
 // import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
@@ -56,6 +56,8 @@ if ( ! process.env.isTest) {
   styles: [require('./app.component.scss')],
 })
 export class AppComponent {
+
+  showSidenavItems = true;
 
   projeto: string = '';
 
